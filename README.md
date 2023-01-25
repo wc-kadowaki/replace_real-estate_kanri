@@ -47,7 +47,7 @@ app/
 ## rules
 - app/pages/では極力ファイル名によるディレクトリ管理を行わない  
   下層ページができる際にディレクトリの作成や既存ページのファイルパスなどの変更が発生してしまうため
-- ページをまたいで共通の値を使用する場合plugins/variables/に定義しnamed exportをする
+- ページをまたいで共通の変数を使用する場合plugins/variables/に定義しnamed exportをする
 - ファイルの命名ルールにはvuejs公式の推奨を用いる  
   pages、projectsには複数単語またはTheが接頭辞としてついているファイルが並び、partsにはBaseの接頭辞がついたファイルが並ぶ
   
