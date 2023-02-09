@@ -13,14 +13,18 @@ app/
       │     ├─ change_password/
       │     │     └─ TheChangeForm.vue
       │     ├─ setting/
-      │     │     ├─
+      │     │     ├─ TheUpdateDeliveryCities
+      │     │     ├─ TheUpdateDeliveryTowns
+      │     │     ├─ TheUpdateDeliveryPropertyType
+      │     │     └─ TheUpdateDeliveryCondition
       |     ├─ admin/
       │     │     └─ .gitkeep
       │     ├─ company/
-      │     │     ├─ InfomationTable.vue
-      │     │     └─ featureItemCounter.vue
+      │     │     └─ edit/
+      │     │         └─ TheUpdateCompany
       │     ├─ list/
-      │     │     └─ .gitkeep
+      │     │     └─ id/
+      │     │         └─ TheUpdateMemo
       │     └─ setting/
       │           ├─ TheTabPanel.vue
       │           ├─ PrefSelect.vue
@@ -35,16 +39,25 @@ app/
       ├─ projects/ #2
       │     ├─ TheHeader.vue
       │     ├─ TheFooter.vue
-      │     ├─ SearchOrder.vue
+      │     ├─ TheOrderSearch
       │     └─ OrderTable.vue
       └ parts/ #3
             ├─ BaseLogo.vue
             ├─ BaseInput.vue
+            ├─ BaseInputRadioButton
+            ├─ BaseInputDate
             ├─ BaseButton.vue
+            ├─ BaseLink
             ├─ BaseSalesContact.vue
             ├─ BasePageTitle.vue
-            
-            
+            ├─ BaseTabNavigation
+            ├─ BaseDeliveryRadioButton
+            ├─ BaseDeliveryCheckbox
+            ├─ BaseDeliverySettingList
+            ├─ BaseDeliverySettingList
+            ├─ BaseOrderTerms
+            ├─ BaseOrderTable
+            ├─ BaseModal
             
             
 ```
@@ -135,13 +148,31 @@ app/
 - 印刷はwindow.printで実装するため特に機能として実装しない
 
 #### 使用コンポーネント
-- projects/TheUpdateMemo
+- pages/list/id/TheUpdateMemo
 - parts/BasePageTitle
 - parts/BaseButton
 - parts/BaseModal
 
+### /company
+#### 機能
+なし
 
+### 使用コンポーネント
+- parts/BasePageTitle
+- parts/BaseLink
 
+### /company/edit
+#### 機能
+- 会社情報、各種設定更新
+
+#### 使用コンポーネント
+- pages/company/edit/TheUpdateCompany
+- parts/BaseInput
+- parts/BaseButton
+- parts/BaseLink
+
+### /result
+### 機能
 
 
 
