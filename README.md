@@ -13,23 +13,23 @@ app/
       │     ├─ change_password/
       │     │     └─ TheChangeForm.vue
       │     ├─ setting/
-      │     │     ├─ TheUpdateDeliveryCities
-      │     │     ├─ TheUpdateDeliveryTowns
-      │     │     ├─ TheUpdateDeliveryPropertyType
-      │     │     └─ TheUpdateDeliveryCondition
+      │     │     ├─ UpdateDeliveryCities
+      │     │     ├─ UpdateDeliveryTowns
+      │     │     ├─ UpdateDeliveryPropertyType
+      │     │     └─ UpdateDeliveryCondition
       |     ├─ admin/
       │     │     └─ .gitkeep
       │     ├─ company/
       │     │     └─ edit/
-      │     │         └─ TheUpdateCompany
+      │     │         └─ UpdateCompany
       │     ├─ list/
       │     │     └─ id/
-      │     │         └─ TheUpdateMemo
+      │     │         └─ UpdateMemo
       │     ├─ setting/
-      │     │     ├─ TheTabPanel.vue
+      │     │     ├─ TabPanel.vue
       │     │     ├─ PrefSelect.vue
       │     │     ├─ CitySelect.vue
-      │     │     ├─ TheDeliveryAreaUpdate.vue
+      │     │     ├─ DeliveryAreaUpdate.vue
       │     │     ├─ DeliveryAreaList.vue
       │     │     ├─ DeliveryCityModal.vue
       │     │     ├─ PropertyTypeSelect.vue
@@ -83,7 +83,8 @@ app/
   下層ページができる際にディレクトリの作成や既存ページのファイルパスなどの変更が発生してしまうため
 - ページをまたいで共通の変数を使用する場合plugins/variables/に定義しnamed exportをする
 - ファイルの命名ルールにはvuejs公式の推奨を用いる  
-  pages、projectsには複数単語またはTheが接頭辞としてついているファイルが並び、partsにはBaseの接頭辞がついたファイルが並ぶ
+  単一インスタンスのコンポーネント名には接頭辞として「The」を付ける
+  基底コンポーネントの名前には接頭辞として「Base」を付ける
 
 ## pages
 ### /index
