@@ -25,21 +25,30 @@ app/
       │     ├─ list/
       │     │     └─ id/
       │     │         └─ TheUpdateMemo
-      │     └─ setting/
-      │           ├─ TheTabPanel.vue
-      │           ├─ PrefSelect.vue
-      │           ├─ CitySelect.vue
-      │           ├─ TheDeliveryAreaUpdate.vue
-      │           ├─ DeliveryAreaList.vue
-      │           ├─ DeliveryCityModal.vue
-      │           ├─ PropertyTypeSelect.vue
-      │           ├─ PropertyTypeConditionUpdate.vue
-      │           ├─ DeliveryPropertyTypeList.vue
-      │           └─ DeliveryPropertyTypeModal.vue
+      │     ├─ setting/
+      │     │     ├─ TheTabPanel.vue
+      │     │     ├─ PrefSelect.vue
+      │     │     ├─ CitySelect.vue
+      │     │     ├─ TheDeliveryAreaUpdate.vue
+      │     │     ├─ DeliveryAreaList.vue
+      │     │     ├─ DeliveryCityModal.vue
+      │     │     ├─ PropertyTypeSelect.vue
+      │     │     ├─ PropertyTypeConditionUpdate.vue
+      │     │     ├─ DeliveryPropertyTypeList.vue
+      │     │     └─ DeliveryPropertyTypeModal.vue
+      │     └─ result/
+      │           ├─ index/
+      │           │     └─ .gitkeep
+      │           ├─ property_type_select/
+      │           │     └─ .gitkeep
+      │           ├─ input/
+      │           ├─ convert/
+      │           └─ csv_import
       ├─ projects/ #2
       │     ├─ TheHeader.vue
       │     ├─ TheFooter.vue
-      │     ├─ TheOrderSearch
+      │     ├─ TheGlobalNavigation.vue
+      │     ├─ OrderSearch
       │     └─ OrderTable.vue
       └ parts/ #3
             ├─ BaseLogo.vue
@@ -47,7 +56,6 @@ app/
             ├─ BaseInputRadioButton
             ├─ BaseInputDate
             ├─ BaseButton.vue
-            ├─ BaseLink
             ├─ BaseSalesContact.vue
             ├─ BasePageTitle.vue
             ├─ BaseTabNavigation
@@ -96,7 +104,6 @@ app/
 #### 使用コンポーネント
 - pages/reset_password/TheResetForm
 - parts/BaseLogo
-- parts/BaseInput
 - parts/BaseButton
 - parts/BaseSalesContact
 
@@ -159,7 +166,6 @@ app/
 
 ### 使用コンポーネント
 - parts/BasePageTitle
-- parts/BaseLink
 
 ### /company/edit
 #### 機能
@@ -169,10 +175,29 @@ app/
 - pages/company/edit/TheUpdateCompany
 - parts/BaseInput
 - parts/BaseButton
-- parts/BaseLink
 
 ### /result
-### 機能
+#### 機能
+- 売却実績を検索
+
+#### 使用コンポーネント
+- projects/SalesResultSearch
+- projects/SalesResultTerms
+- projects/SalesResultTable
+- projects/PageNation
+- parts/SalesResultNavigation
+- parts/BaseInput
+- parts/BaseInputRadioButton
+- parts/BaseInputDate
 
 
 
+
+
+
+## 相談
+- BaseInputは不要では？属性による拡張が大変なのでコンポーネントにしない方がいいのでは？ただのstyleの為のものならscssのmixinで十分
+- ↑の理由ならBaseButtonも不要
+- APIの実行はコンポーネント側で行うかpages側で行うのか？
+- APIはpluginsにまとめて必要なものをnamed exportで呼び出す形が良いか
+- 
