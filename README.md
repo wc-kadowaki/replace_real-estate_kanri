@@ -26,22 +26,16 @@ app/
       │     │     └─ id/
       │     │         └─ UpdateMemo
       │     ├─ setting/
-      │     │     ├─ TabPanel.vue
-      │     │     ├─ PrefSelect.vue
-      │     │     ├─ CitySelect.vue
-      │     │     ├─ DeliveryAreaUpdate.vue
-      │     │     ├─ DeliveryAreaList.vue
-      │     │     ├─ DeliveryCityModal.vue
-      │     │     ├─ PropertyTypeSelect.vue
-      │     │     ├─ PropertyTypeConditionUpdate.vue
-      │     │     ├─ DeliveryPropertyTypeList.vue
-      │     │     └─ DeliveryPropertyTypeModal.vue
+      │     │     ├─ UpdatePropertyTypeCondition.vue
+      │     │     ├─ UpdateDeliveryArea.vue
+      │     │     └─ UpdateDeliveryConditionModal.vue
       │     └─ result/
       │           ├─ index/
       │           │     └─ .gitkeep
       │           ├─ property_type_select/
       │           │     └─ .gitkeep
       │           ├─ input/
+      │           │     └─ Regist
       │           ├─ convert/
       │           └─ csv_import
       ├─ projects/ #2
@@ -49,23 +43,19 @@ app/
       │     ├─ TheFooter.vue
       │     ├─ TheGlobalNavigation.vue
       │     ├─ OrderSearch
-      │     └─ OrderTable.vue
+      │     └─ 
       └ parts/ #3
             ├─ BaseLogo.vue
-            ├─ BaseInput.vue
-            ├─ BaseInputRadioButton
-            ├─ BaseInputDate
             ├─ BaseButton.vue
-            ├─ BaseSalesContact.vue
             ├─ BasePageTitle.vue
-            ├─ BaseTabNavigation
-            ├─ BaseDeliveryRadioButton
-            ├─ BaseDeliveryCheckbox
-            ├─ BaseDeliverySettingList
-            ├─ BaseDeliverySettingList
-            ├─ BaseOrderTerms
-            ├─ BaseOrderTable
-            ├─ BaseModal
+            ├─ SalesContact.vue
+            ├─ DeliveryRadioButton
+            ├─ DeliveryCheckbox
+            ├─ DeliverySettingList
+            ├─ TabPanel.vue
+            ├─ OrderTerms
+            ├─ OrderTable
+            ├─ ModalDefault
             
             
 ```
@@ -82,9 +72,7 @@ app/
 - app/pages/では極力ファイル名によるディレクトリ管理を行わない  
   下層ページができる際にディレクトリの作成や既存ページのファイルパスなどの変更が発生してしまうため
 - ページをまたいで共通の変数を使用する場合plugins/variables/に定義しnamed exportをする
-- ファイルの命名ルールにはvuejs公式の推奨を用いる  
-  単一インスタンスのコンポーネント名には接頭辞として「The」を付ける
-  基底コンポーネントの名前には接頭辞として「Base」を付ける
+- ファイルの命名ルールにはこちらの推奨を用いる(https://ja.vuejs.org/style-guide/)  
 
 ## pages
 ### /index
@@ -94,9 +82,8 @@ app/
 #### 使用コンポーネント
 - pages/index/TheLoginForm
 - parts/BaseLogo
-- parts/BaseInput
 - parts/BaseButton
-- parts/BaseSalesContact
+- parts/SalesContact
 
 ### /reset_password
 #### 機能
@@ -106,7 +93,7 @@ app/
 - pages/reset_password/TheResetForm
 - parts/BaseLogo
 - parts/BaseButton
-- parts/BaseSalesContact
+- parts/SalesContact
 
 ### /change_password
 #### 機能
@@ -115,7 +102,6 @@ app/
 #### 使用コンポーネント
 - pages/change_password/TheChangeForm
 - parts/BasePageTitle
-- parts/BaseInput
 - parts/BaseButton
 
 ### /setting
@@ -126,40 +112,35 @@ app/
 - 配信する物件の詳細を更新
 
 #### 使用コンポーネント
-- pages/setting/TheUpdateDeliveryCities
-- pages/setting/TheUpdateDeliveryTowns
-- pages/setting/TheUpdateDeliveryPropertyType
-- pages/setting/TheUpdateDeliveryCondition
-- parts/BaseTabNavigation
-- parts/BaseDeliveryRadioButton
-- parts/BaseDeliveryCheckbox
+- pages/setting/TabPanel
+- pages/setting/UpdatePropertyTypeCondition
+- pages/setting/UpdateDeliveryArea
+- pages/setting/UpdateDeliveryConditionModal
+- parts/DeliveryRadioButton
+- parts/DeliveryCheckbox
+- parts/DeliverySettingList
 - parts/BaseButton
-- parts/BaseDeliverySettingList
-- parts/BaseModal
 
 ### /list
 #### 機能
 - 案件を検索
 
 #### 使用コンポーネント
-- projects/TheOrderSearch
-- parts/BaseOrderTerms
-- parts/BaseOrderTable
+- projects/OrderSearch
+- parts/OrderTerms
+- parts/OrderTable
 - parts/BasePageTitle
-- parts/BaseInput
-- parts/BaseInputRadioButton
-- parts/BaseInputDate
 
 ### /list/:id
 #### 機能
-- メモを更新する
-- 印刷はwindow.printで実装するため特に機能として実装しない
+- メモを更新する  
+  ※印刷はwindow.printで実装するため特に機能として実装しない
 
 #### 使用コンポーネント
-- pages/list/id/TheUpdateMemo
+- pages/list/id/UpdateMemo
 - parts/BasePageTitle
 - parts/BaseButton
-- parts/BaseModal
+- parts/ModalDefault
 
 ### /company
 #### 機能
@@ -174,7 +155,6 @@ app/
 
 #### 使用コンポーネント
 - pages/company/edit/TheUpdateCompany
-- parts/BaseInput
 - parts/BaseButton
 
 ### /result
@@ -187,18 +167,25 @@ app/
 - projects/SalesResultTable
 - projects/PageNation
 - parts/SalesResultNavigation
-- parts/BaseInput
-- parts/BaseInputRadioButton
-- parts/BaseInputDate
 
+### /result/property_type_select
+#### 機能
+- 物件種別を選択し遷移先の/result/inputで選択した物件種別を利用可能にする(store)
 
+#### 使用コンポーネント
+- なし
 
+### /result/input
+#### 機能
+- 入力したデータで売却実績を登録できる機能
 
+#### 使用コンポーネント
 
 
 ## 相談
-- BaseInputは不要では？属性による拡張が大変なのでコンポーネントにしない方がいいのでは？ただのstyleの為のものならscssのmixinで十分
-- ↑の理由ならBaseButtonも不要
-- APIの実行はコンポーネント側で行うかpages側で行うのか？
+- BaseButtonの有用性が分からない。ただのstyleの為のものならscssのmixinで十分では？その方が拡張性もあるのでは？
 - APIはpluginsにまとめて必要なものをnamed exportで呼び出す形が良いか
-- 
+- company/editの特徴選択はコンポーネントにするべきか？  
+  特徴選択（サービス、スタッフ）、諸々の設定の3つのコンポーネントから値をpagesで受け取りpagesでAPI実行みたいなイメージならコンポーネントにするべきだがコンポーネントにどこまでの責任を持たせるべきか？
+- APIの実行はコンポーネント側で行うかpages側で行うのか？
+- APIの実行は基本的にpages側で行い、表示や選択しに関わるAPIのgetについてはcomponentのpages, projectsのみ許容とか？
