@@ -255,3 +255,11 @@ app/
 - ↑の追加で、ものによってはcomponentで実行するAPIとほかのコンポーネントだが同じAPIを実行したいことがある場合はpagesにAPIのparam管理とAPI実行を任せた方がいい場合もある(/result/の検索機能とページ変更)
 - バケツリレーが2階層以内である強みを生かすのであればAPIはすべてpagesの実行でも大変ではないのでは？
 - 
+
+## 参考にしたもの
+- https://note.com/tabelog_frontend/n/n07b4077f5cf3
+- https://zenn.dev/offers/articles/20220523-component-design-best-practice
+- 
+
+
+
