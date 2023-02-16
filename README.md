@@ -253,4 +253,5 @@ app/
 - APIはpluginsにまとめて必要なものをnamed exportで呼び出す形が良いか
 - 初期表示に必要なAPIの実行は基本的にpages側で行い、機能に関係するAPIについてはcomponentのpages, projectsのみ許容とか？
 - ↑の追加で、ものによってはcomponentで実行するAPIとほかのコンポーネントだが同じAPIを実行したいことがある場合はpagesにAPIのparam管理とAPI実行を任せた方がいい場合もある(/result/の検索機能とページ変更)
+- バケツリレーが2階層以内である強みを生かすのであればAPIはすべてpagesの実行でも大変ではないのでは？
 - 
