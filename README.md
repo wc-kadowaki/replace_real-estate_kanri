@@ -7,16 +7,11 @@ app/
   └ components/
       ├─ pages/ #1
       │     ├─ index/
-      │     │     └─ TheLoginForm.vue
+      │     │     └─ TheLoginForm
       │     ├─ reset_password/
-      │     │     └─ TheResetForm.vue
+      │     │     └─ TheResetForm
       │     ├─ change_password/
-      │     │     └─ TheChangeForm.vue
-      │     ├─ setting/
-      │     │     ├─ UpdateDeliveryCities
-      │     │     ├─ UpdateDeliveryTowns
-      │     │     ├─ UpdateDeliveryPropertyType
-      │     │     └─ UpdateDeliveryCondition
+      │     │     └─ TheChangeForm  
       |     ├─ admin/
       │     │     └─ .gitkeep
       │     ├─ company/
@@ -26,53 +21,67 @@ app/
       │     │     └─ id/
       │     │         └─ UpdateMemo
       │     ├─ setting/
-      │     │     ├─ UpdatePropertyTypeCondition.vue
-      │     │     ├─ UpdateDeliveryArea.vue
-      │     │     └─ UpdateDeliveryConditionModal.vue
+      │     │     ├─ ChangeTab
+      │     │     ├─ UpdateDeliveryCities
+      │     │     ├─ UpdateDeliveryTowns
+      │     │     ├─ UpdateDeliveryPropertyType
+      │     │     └─ UpdateDeliveryPropertyCondition
       │     └─ result/
       │           ├─ index/
       │           │     └─ .gitkeep
       │           ├─ property_type_select/
-      │           │     └─ .gitkeep
+      │           │     └─ SelectPropertyType
       │           ├─ input/
-      │           │     └─ Regist
+      │           │     └─ TheRegistForm
       │           ├─ convert/
+      │           │     └─ TheConvertToCsv
       │           └─ csv_import
+      │                 └─ TheImportCsv
       ├─ projects/ #2
-      │     ├─ TheHeader.vue
-      │     ├─ TheFooter.vue
-      │     ├─ TheGlobalNavigation.vue
+      │     ├─ TheHeader
+      │     ├─ TheFooter
+      │     ├─ TheGlobalNavigation
       │     ├─ OrderSearch
-      │     └─ 
+      │     └─ SalesResultSearch
       └ parts/ #3
-            ├─ BaseLogo.vue
-            ├─ BaseButton.vue
-            ├─ BasePageTitle.vue
-            ├─ SalesContact.vue
+            ├─ BaseLogo
+            ├─ BaseButton
+            ├─ BasePageTitle
+            ├─ BaseTable
+            ├─ BaseModal
+            ├─ SalesContact
             ├─ DeliveryRadioButton
             ├─ DeliveryCheckbox
             ├─ DeliverySettingList
-            ├─ TabPanel.vue
             ├─ OrderTerms
             ├─ OrderTable
-            ├─ ModalDefault
+            ├─ SalesResultTerms
+            ├─ SalesResultTable
+            ├─ PageNation
+            ├─ SelectPrefModal
+            ├─ SelectRailModal
+            ├─ SelectStationModal
+            ├─ SelectCityModal
+            ├─ SelectTownModal
+            └─ BatchRegistHeader
             
             
 ```
 
-#1 そのページのみで使用する機能を持ったコンポーネント（単一の機能の場合parts）  
-#2 ページをまたいで使用される機能を持ったコンポーネント（単一の機能の場合parts）  
-#3 単一の機能を持つまたは機能を持たないコンポーネント（storeへのアクセス及びAPIの使用も禁止）
+#1 そのページのみで使用する機能を持ったコンポーネント  
+#2 ページをまたいで使用される機能を持ったコンポーネント  
+#3 propsやslotで表示を変えたり、emitで親コンポーネントに値を送るコンポーネント、または要素を表示するだけのコンポーネント（store, route, API等の使用も禁止）  
 
 ### なぜこの構成にしようとしたのか？
-- 状態管理をapp/pages/で管理してもstateのバケツリレーの階層が2階層以上にならない
+- 可読性、可変性、保守性の観点から品質を高めるため
+- 状態管理をapp/pages/で管理してもstateのバケツリレーの階層が2階層以上にならないpages ⇔ component ⇔ parts
 - ページ単体なのか複数のページにまたがるのかで影響範囲がわかりやすい
 
 ## rules
 - app/pages/では極力ファイル名によるディレクトリ管理を行わない  
   下層ページができる際にディレクトリの作成や既存ページのファイルパスなどの変更が発生してしまうため
 - ページをまたいで共通の変数を使用する場合plugins/variables/に定義しnamed exportをする
-- ファイルの命名ルールにはこちらの推奨を用いる(https://ja.vuejs.org/style-guide/)  
+- ファイルの命名ルールにはこちらの推奨を参考にする(https://ja.vuejs.org/style-guide/)  
 
 ## pages
 ### /index
@@ -112,10 +121,11 @@ app/
 - 配信する物件の詳細を更新
 
 #### 使用コンポーネント
-- pages/setting/TabPanel
-- pages/setting/UpdatePropertyTypeCondition
-- pages/setting/UpdateDeliveryArea
-- pages/setting/UpdateDeliveryConditionModal
+- pages/setting/ChangeTab
+- pages/setting/UpdateDeliveryCities
+- pages/setting/UpdateDeliveryTowns
+- pages/setting/UpdateDeliveryPropertyType
+- pages/setting/UpdateDeliveryPropertyCondition
 - parts/DeliveryRadioButton
 - parts/DeliveryCheckbox
 - parts/DeliverySettingList
@@ -128,6 +138,7 @@ app/
 #### 使用コンポーネント
 - projects/OrderSearch
 - parts/OrderTerms
+- parts/PageNation
 - parts/OrderTable
 - parts/BasePageTitle
 
@@ -141,6 +152,7 @@ app/
 - parts/BasePageTitle
 - parts/BaseButton
 - parts/ModalDefault
+- parts/BaseTable
 
 ### /company
 #### 機能
@@ -148,6 +160,7 @@ app/
 
 ### 使用コンポーネント
 - parts/BasePageTitle
+- parts/BaseTable
 
 ### /company/edit
 #### 機能
@@ -155,17 +168,21 @@ app/
 
 #### 使用コンポーネント
 - pages/company/edit/TheUpdateCompany
+- parts/BasePageTitle
+- parts/BaseTable
 - parts/BaseButton
 
 ### /result
 #### 機能
 - 売却実績を検索
+- 売却実績を公開非公開の切り替え
+- 売却実績を削除
 
 #### 使用コンポーネント
 - projects/SalesResultSearch
 - projects/SalesResultTerms
 - projects/SalesResultTable
-- projects/PageNation
+- parts/PageNation
 - parts/SalesResultNavigation
 
 ### /result/property_type_select
@@ -173,19 +190,67 @@ app/
 - 物件種別を選択し遷移先の/result/inputで選択した物件種別を利用可能にする(store)
 
 #### 使用コンポーネント
-- なし
+- pages/result/property_type_select/SelectPropertyType
+- parts/SalesResultNavigation
 
 ### /result/input
 #### 機能
 - 入力したデータで売却実績を登録できる機能
 
 #### 使用コンポーネント
+- parts/SalesResultNavigation
+- parts/SelectPrefModal
+- parts/SelectRailModal
+- parts/SelectStationModal
+- parts/SelectCityModal
+- parts/SelectTownModal
+
+### /result/convert
+#### 機能
+- txtファイルを選択しcsvファイルに変換する
+
+#### 使用コンポーネント
+- pages/result/convert/TheConvertToCsv
+- parts/SalesResultNavigation
+- parts/BasePageTitle
+- parts/BatchRegistHeader
+
+### /result/csv_import
+#### 機能
+- csvファイルを選択しインポートを実行する
+
+#### 使用するコンポーネント
+- pages/result/csv_import/TheImportCsv
+- parts/SalesResultNavigation
+- parts/BasePageTitle
+- parts/BatchRegistHeader
+
+### /admin/
+#### 機能
+- 案件を検索
+- テーブルをcsvでダウンロード
+
+#### 使用コンポーネント
+- projects/OrderSearch
+- parts/OrderTerms
+- parts/PageNation
+- parts/OrderTable
+- parts/BasePageTitle
+
+### /admin/result
+#### 機能
+- 売却実績を検索
+
+#### 仕様コンポーネント
+- projects/SalesResultSearch
+- projects/SalesResultTerms
+- projects/SalesResultTable
+- parts/PageNation
 
 
 ## 相談
-- BaseButtonの有用性が分からない。ただのstyleの為のものならscssのmixinで十分では？その方が拡張性もあるのでは？
+- BaseButtonの有用性が分からない。ただのstyleの為のものならscssのmixinで十分では？その方が可変性もあるのでは？
 - APIはpluginsにまとめて必要なものをnamed exportで呼び出す形が良いか
-- company/editの特徴選択はコンポーネントにするべきか？  
-  特徴選択（サービス、スタッフ）、諸々の設定の3つのコンポーネントから値をpagesで受け取りpagesでAPI実行みたいなイメージならコンポーネントにするべきだがコンポーネントにどこまでの責任を持たせるべきか？
-- APIの実行はコンポーネント側で行うかpages側で行うのか？
-- APIの実行は基本的にpages側で行い、表示や選択しに関わるAPIのgetについてはcomponentのpages, projectsのみ許容とか？
+- 初期表示に必要なAPIの実行は基本的にpages側で行い、機能に関係するAPIについてはcomponentのpages, projectsのみ許容とか？
+- ↑の追加で、ものによってはcomponentで実行するAPIとほかのコンポーネントだが同じAPIを実行したいことがある場合はpagesにAPIのparam管理とAPI実行を任せた方がいい場合もある(/result/の検索機能とページ変更)
+- 
