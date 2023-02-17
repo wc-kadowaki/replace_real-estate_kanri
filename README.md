@@ -259,7 +259,7 @@ app/
 ## 参考にしたもの
 - https://note.com/tabelog_frontend/n/n07b4077f5cf3
 - https://zenn.dev/offers/articles/20220523-component-design-best-practice
-- 
+- https://zenn.dev/morinokami/books/learning-patterns-1/viewer/presentational-container-pattern
 
 
 
