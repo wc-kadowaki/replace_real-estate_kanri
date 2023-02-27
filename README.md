@@ -5,47 +5,28 @@
 ```
 app/
   └ components/
-      ├─ pages/ #1
-      │     ├─ index/
-      │     │     └─ TheLoginForm
-      │     ├─ reset_password/
-      │     │     └─ TheResetForm
-      │     ├─ change_password/
-      │     │     └─ TheChangeForm  
-      |     ├─ admin/
-      │     │     └─ .gitkeep
-      │     ├─ company/
-      │     │     └─ edit/
-      │     │         └─ UpdateCompany
-      │     ├─ list/
-      │     │     └─ id/
-      │     │         └─ UpdateMemo
-      │     ├─ setting/
-      │     │     ├─ ChangeTab
-      │     │     ├─ UpdateDeliveryCities
-      │     │     ├─ UpdateDeliveryTowns
-      │     │     ├─ UpdateDeliveryPropertyType
-      │     │     └─ UpdateDeliveryPropertyCondition
-      │     └─ result/
-      │           ├─ index/
-      │           │     └─ .gitkeep
-      │           ├─ property_type_select/
-      │           │     └─ SelectPropertyType
-      │           ├─ input/
-      │           │     └─ TheRegistForm
-      │           ├─ convert/
-      │           │     └─ TheConvertToCsv
-      │           └─ csv_import
-      │                 └─ TheImportCsv
-      ├─ projects/ #2
+      ├─ container/ #1
+      │     ├─ ChangeTab
+      │     ├─ TheLoginForm
+      │     ├─ TheResetForm
+      │     ├─ TheChangeForm
+      │     ├─ TheRegistForm
+      │     ├─ TheConvertToCsv
+      │     ├─ TheImportCsv
       │     ├─ TheHeader
       │     ├─ TheFooter
       │     ├─ TheGlobalNavigation
+      |     ├─ UpdateCompany
+      │     ├─ UpdateMemo
+      │     ├─ UpdateDeliveryCities
+      │     ├─ UpdateDeliveryTowns
+      │     ├─ UpdateDeliveryPropertyType
+      │     ├─ UpdateDeliveryPropertyCondition
       │     ├─ OrderSearch
+      │     ├─ SelectPropertyType
       │     └─ SalesResultSearch
-      └ parts/ #3
+      └ parts/ #2
             ├─ BaseLogo
-            ├─ BaseButton
             ├─ BasePageTitle
             ├─ BaseTable
             ├─ BaseModal
@@ -68,9 +49,8 @@ app/
             
 ```
 
-#1 そのページのみで使用する機能を持ったコンポーネント  
-#2 ページをまたいで使用される機能を持ったコンポーネント  
-#3 propsやslotで表示を変えたり、emitで親コンポーネントに値を送るコンポーネント、または要素を表示するだけのコンポーネント（store, route, API等の使用も禁止）  
+#1 機能を持ったコンポーネント  
+#2 propsやslotで表示を変えたり、emitで親コンポーネントに値を送るコンポーネント、または要素を表示するだけのコンポーネント（store, route, API等の使用も禁止）  
 
 ### なぜこの構成にしようとしたのか？
 - 可読性、可変性、保守性の観点から品質を高めるため
@@ -89,7 +69,7 @@ app/
 - ログイン機能
 
 #### 使用コンポーネント
-- pages/index/TheLoginForm
+- container/TheLoginForm
 - parts/BaseLogo
 - parts/BaseButton
 - parts/SalesContact
@@ -99,7 +79,7 @@ app/
 - パスワード再設定のメールを送信
 
 #### 使用コンポーネント
-- pages/reset_password/TheResetForm
+- container/TheResetForm
 - parts/BaseLogo
 - parts/BaseButton
 - parts/SalesContact
@@ -109,7 +89,7 @@ app/
 - パスワードの変更
 
 #### 使用コンポーネント
-- pages/change_password/TheChangeForm
+- container/TheChangeForm
 - parts/BasePageTitle
 - parts/BaseButton
 
@@ -121,11 +101,11 @@ app/
 - 配信する物件の詳細を更新
 
 #### 使用コンポーネント
-- pages/setting/ChangeTab
-- pages/setting/UpdateDeliveryCities
-- pages/setting/UpdateDeliveryTowns
-- pages/setting/UpdateDeliveryPropertyType
-- pages/setting/UpdateDeliveryPropertyCondition
+- container/ChangeTab
+- container/UpdateDeliveryCities
+- container/UpdateDeliveryTowns
+- container/UpdateDeliveryPropertyType
+- container/UpdateDeliveryPropertyCondition
 - parts/DeliveryRadioButton
 - parts/DeliveryCheckbox
 - parts/DeliverySettingList
@@ -136,7 +116,7 @@ app/
 - 案件を検索
 
 #### 使用コンポーネント
-- projects/OrderSearch
+- container/OrderSearch
 - parts/OrderTerms
 - parts/PageNation
 - parts/OrderTable
@@ -148,7 +128,7 @@ app/
   ※印刷はwindow.printで実装するため特に機能として実装しない
 
 #### 使用コンポーネント
-- pages/list/id/UpdateMemo
+- container/UpdateMemo
 - parts/BasePageTitle
 - parts/BaseButton
 - parts/ModalDefault
@@ -167,7 +147,7 @@ app/
 - 会社情報、各種設定更新
 
 #### 使用コンポーネント
-- pages/company/edit/TheUpdateCompany
+- container/TheUpdateCompany
 - parts/BasePageTitle
 - parts/BaseTable
 - parts/BaseButton
@@ -179,9 +159,9 @@ app/
 - 売却実績を削除
 
 #### 使用コンポーネント
-- projects/SalesResultSearch
-- projects/SalesResultTerms
-- projects/SalesResultTable
+- container/SalesResultSearch
+- container/SalesResultTerms
+- container/SalesResultTable
 - parts/PageNation
 - parts/SalesResultNavigation
 
@@ -190,7 +170,7 @@ app/
 - 物件種別を選択し遷移先の/result/inputで選択した物件種別を利用可能にする(store)
 
 #### 使用コンポーネント
-- pages/result/property_type_select/SelectPropertyType
+- container/SelectPropertyType
 - parts/SalesResultNavigation
 
 ### /result/input
@@ -210,7 +190,7 @@ app/
 - txtファイルを選択しcsvファイルに変換する
 
 #### 使用コンポーネント
-- pages/result/convert/TheConvertToCsv
+- container/TheConvertToCsv
 - parts/SalesResultNavigation
 - parts/BasePageTitle
 - parts/BatchRegistHeader
@@ -220,7 +200,7 @@ app/
 - csvファイルを選択しインポートを実行する
 
 #### 使用するコンポーネント
-- pages/result/csv_import/TheImportCsv
+- container/TheImportCsv
 - parts/SalesResultNavigation
 - parts/BasePageTitle
 - parts/BatchRegistHeader
@@ -231,7 +211,7 @@ app/
 - テーブルをcsvでダウンロード
 
 #### 使用コンポーネント
-- projects/OrderSearch
+- container/OrderSearch
 - parts/OrderTerms
 - parts/PageNation
 - parts/OrderTable
@@ -242,9 +222,9 @@ app/
 - 売却実績を検索
 
 #### 仕様コンポーネント
-- projects/SalesResultSearch
-- projects/SalesResultTerms
-- projects/SalesResultTable
+- container/SalesResultSearch
+- container/SalesResultTerms
+- container/SalesResultTable
 - parts/PageNation
 
 
