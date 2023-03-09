@@ -232,7 +232,8 @@ app/
 - BaseButtonの有用性が分からない。ただのstyleの為のものならscssのmixinで十分では？その方が可変性もあるのでは？  
 → styleの種類が少ないのでmixinにする
 - APIはpluginsにまとめて必要なものをnamed exportで呼び出す形が良いか  
-→ まとめることを推奨されているがビルドサイズ次第 named export調べる
+→ まとめることを推奨されているがビルドサイズ次第 named export調べる  
+→ 調べた結果nuxt jsのaxios(postやget等)はmoduleに定義されておりpluginsのaxiosはmoduleのデフォルトの設定を変更したりインターセプトするためのものである。plugins/axiosにexport let axios;export default ({$axios})=>{axios = $axios}でpostやgetを実行できるaxiosを定義できるがその定義したaxiosは$axiosとは別物になるためビルドサイズが増えてしまう。
 - 初期表示に必要なAPIの実行は基本的にpages側で行い、機能に関係するAPIについてはcomponentのpages, projectsのみ許容とか？  
 これでよい
 - ↑の追加で、ものによってはcomponentで実行するAPIとほかのコンポーネントだが同じAPIを実行したいことがある場合はpagesにAPIのparam管理とAPI実行を任せた方がいい場合もある(/result/の検索機能とページ変更)  
