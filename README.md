@@ -28,7 +28,6 @@ app/
       └ parts/ #2
             ├─ BaseLogo
             ├─ BasePageTitle
-            ├─ BaseTable
             ├─ BaseModal
             ├─ SalesContact
             ├─ DeliveryRadioButton
